@@ -1,10 +1,7 @@
 /*
 
-	Creates an array of array values not included in the other given arrays using
-	SameValueZero for equality comparisons.
-	
+	Creates an array of array values not included in the other given arrays.
 	The order and references of result values are determined by the first array.
-
 
 	// Examples
 	difference([2,1], [2,3]) ==> [1]
