@@ -1,3 +1,4 @@
+const { test, expect } = require('../test');
 /*
 
 	You are going to be given an array of integers.
@@ -14,20 +15,16 @@
 
 */
 
-const { test } = require('../test');
-
-/* Test cases */
-const cases = [
-	[[[1, 100, 50, -51, 1, 1]], 1],
-	[[[1, 2, 3, 4, 3, 2, 1]], 3],
-];
-
 
 
 function findEvenIndex(arr, startIndex = 0) {
-	// Your code here
+	// Your code
 }
 
 
+
 // Run tests
-test(findEvenIndex, cases);
+test('1-findEvenIndex.js', () => {
+	expect(findEvenIndex([1, 100, 50, -51, 1, 1]), 1);
+	expect(findEvenIndex([1, 2, 3, 4, 3, 2, 1]), 3);
+});

@@ -1,3 +1,4 @@
+const { test, expect } = require('../test');
 /*
 
 	Creates an array with all falsey values removed.
@@ -5,22 +6,16 @@
 
 */
 
-const { test } = require('../test');
-
-
-/* Test cases */
-const cases = [
-	[[[1, 0, 2, '', false, 3]], [1, 2, 3]],
-	[[[1, 2, 3]], [1, 2, 3]],
-	[[[0, false, '']], []],
-	[[['a', 1, false]], ['a', 1]],
-	[[[true, true, false, NaN, undefined, null]], [true, true]]
-];
-/* Test cases */
 
 
 const compact = (arr) => arr.filter(val => !!val);
 
 
 // Run tests
-test(compact, cases);
+test('3-compact.js', () => {
+	expect(compact([1, 0, 2, '', false, 3]), [1,2,3]);
+	expect(compact([1, 2, 3]), [1,2,3]);
+	expect(compact([0, false, '']), []);
+	expect(compact(['a', 1, false]), ['a', 1]);
+	expect(compact([true, true, false, NaN, undefined, null]), [true, true]);
+});

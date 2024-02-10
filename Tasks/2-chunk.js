@@ -1,3 +1,4 @@
+const { test, expect } = require('../test');
 /*
 
 	Creates an array of elements split into groups the length of `size`.
@@ -10,7 +11,11 @@
 */
 
 const chunk = (arr, size) => {
-	// Your code here
+	// Your code
 };
 
-console.log(chunk([1, 2, 3, 4, 5, 6], 2));
+test('2-chunk.js', () => {
+	expect(chunk([1, 2, 3, 4, 5, 6], 2), [[1,2], [3,4], [5,6]]);
+	expect(chunk([1, 2, 3], 1), [1,2,3]);
+	expect(chunk([1, 2, 3, 4, 5, 6], 7), [1,2,3,4,5,6]);
+});

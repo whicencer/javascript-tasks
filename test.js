@@ -1,6 +1,7 @@
 const COLOR_ERROR = '\x1b[31m';
 const COLOR_INFO = '\x1b[90m';
 const COLOR_NORM = '\x1b[32m';
+const COLOR_CYAN = '\x1b[36m';
 
 const logger = (color) => (string) => {
 	console.log(color + string);
@@ -10,25 +11,38 @@ logger.error = logger(COLOR_ERROR);
 logger.success = logger(COLOR_NORM);
 logger.info = logger(COLOR_INFO);
 
-function test(func, cases) {
+(() => {
 	let passed = 0;
+	let counter = 0;
 
-	for ([arguments, expectedValue] of cases) {
-		const msg = `Case ${func.name}(${JSON.stringify(arguments)}) --> `;
-
-		expectedValue = JSON.stringify(expectedValue);
-		const res = func(...arguments);
-		const result = JSON.stringify(res);
-
-		if (result === expectedValue) {
-			passed++;
-			logger.success(msg + `Completed: Expected ${expectedValue}, got ${result}`);
-		} else {
-			logger.error(msg + `Failed: Expected ${expectedValue}, but got ${result}`);
+	function test(description, expectTest) {
+		const msg = COLOR_CYAN + `Running Test "${description}"...`;
+	
+		logger.info(msg);
+		
+		try {
+			expectTest();
+		} catch (error) {
+			logger.error(`Test "${description}" failed \n`);
+			throw new Error(error);
 		}
+	
+		logger.info(`Passed: ${passed} of ${counter}`);
+	};
+	
+	function expect(actual, expected) {
+		actual = JSON.stringify(actual);
+		expected = JSON.stringify(expected);
+
+		if (actual === expected) {
+			passed++;
+			logger.success(`Completed: Expected ${expected}, got ${actual}\n`);
+		} else {
+			logger.error(`Failed: Expected ${expected}, but got ${actual}\n`);
+		}
+
+		counter++;
 	}
 
-	logger.info(COLOR_INFO, `Passed: ${passed} of ${cases.length}`);
-}
-
-module.exports = { test };
+	module.exports = { test, expect };
+})();

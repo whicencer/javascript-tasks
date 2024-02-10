@@ -1,3 +1,4 @@
+const { expect, test } = require('../test');
 /*
 
 	Creates an array of array values not included in the other given arrays.
@@ -8,23 +9,26 @@
 
 */
 
-const { test } = require('../test');
-
-
-/* Test case */
-const cases = [
-	[[[2, 1], [2, 3], [1]], []],
-	[[[2, 1], [2, 3], []], [1]],
-	[[[2, 1], [2, 3]], [1]],
-	[[[2, 1, 4, 5, 6, 7], [2, 3], [1, 4, 5]], [6, 7]],
-];
-/* Test case */
 
 
 function difference(array, ...values) {
 	// Your code
 }
 
-
 // Run tests
-test(difference, cases);
+test('5-difference.js', () => {
+	expect(difference([2, 1], [2, 3], [1]), []);
+	expect(difference([2, 1], [2, 3], []), [1]);
+	expect(difference([2, 1], [2, 3]), [1]);
+	expect(difference([2, 1, 4, 5, 6, 7], [2, 3], [1, 4, 5]), [6,7]);
+});
+
+
+
+/* Another solution */
+
+// function difference(array, ...values) {
+// 	const secondArray = concat(...values);
+
+// 	return array.filter(value => !secondArray.includes(value));
+// }

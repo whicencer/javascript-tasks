@@ -1,3 +1,4 @@
+const { test, expect } = require('../test');
 /*
 
 	Creates a new array concatenating array with any additional arrays and/or values.
@@ -8,18 +9,6 @@
 
 */
 
-const { test } = require('../test');
-
-/* Test cases */
-const array = [1, [2, 3]];
-const cases = [
-	[/* args */[array, 4, [5, 6, 7, 8, 9], [[10]]], /* expected */[1, [2, 3], 4, 5, 6, 7, 8, 9, [10]]],
-	[/* args */[array, 3, 4, 3, [[[[3]]]]], /* expected */[1, [2, 3], 3, 4, 3, [[[3]]]]],
-	[/* args */[array, 4], /* expected */[1, [2, 3], 4]],
-];
-/* Test cases */
-
-
 
 function concat(array, ...values) {
 	// Your code
@@ -28,4 +17,9 @@ function concat(array, ...values) {
 
 
 // Run tests
-test(concat, cases);
+const array = [1, [2, 3]];
+test('4-concat.js', () => {
+	expect(concat(array, 4, [5, 6, 7, 8, 9], [[10]]), [1, [2, 3], 4, 5, 6, 7, 8, 9, [10]]);
+	expect(concat(array, 3, 4, 3, [[[[3]]]]), [1, [2, 3], 3, 4, 3, [[[3]]]]);
+	expect(concat(array, 4), [1, [2, 3], 4]);
+});
