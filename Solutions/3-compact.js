@@ -10,11 +10,11 @@ const { test } = require('../test');
 
 /* Test cases */
 const cases = [
-	[[[1,0,2,'',false,3]], [1,2,3]],
-	[[[1,2,3]], [1,2,3]],
-	[[[0,false,'']], []],
-	[[['a',1,false]], ['a',1]],
-	[[[true,true,false,NaN,undefined,null]], [true,true]]
+	[[[1, 0, 2, '', false, 3]], [1, 2, 3]],
+	[[[1, 2, 3]], [1, 2, 3]],
+	[[[0, false, '']], []],
+	[[['a', 1, false]], ['a', 1]],
+	[[[true, true, false, NaN, undefined, null]], [true, true]]
 ];
 /* Test cases */
 

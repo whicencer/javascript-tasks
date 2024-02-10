@@ -18,27 +18,27 @@ const { test } = require('../test');
 
 /* Test cases */
 const cases = [
-	[[[1,100,50,-51,1,1]], 1],
-	[[[1,2,3,4,3,2,1]], 3],
+	[[[1, 100, 50, -51, 1, 1]], 1],
+	[[[1, 2, 3, 4, 3, 2, 1]], 3],
 ];
 
 
 
-function sum (arr, from, to) {
-  return arr.slice(from, to).reduce((a,b) => a+b, 0);
+function sum(arr, from, to) {
+	return arr.slice(from, to).reduce((a, b) => a + b, 0);
 }
 
 function findEvenIndex(arr, startIndex = 0) {
 	const leftSum = sum(arr, 0, startIndex);
-	const rightSum = sum(arr, startIndex+1);
+	const rightSum = sum(arr, startIndex + 1);
 
 	if (leftSum === rightSum) {
 		return startIndex;
 	} else if (leftSum !== rightSum && startIndex === arr.length) {
 		return -1;
 	}
-  
-  return findEvenIndex(arr, ++startIndex);
+
+	return findEvenIndex(arr, ++startIndex);
 }
 
 
