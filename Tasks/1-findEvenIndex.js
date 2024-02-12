@@ -17,7 +17,7 @@ const { test, expect } = require('../test');
 
 
 
-function findEvenIndex(arr, startIndex = 0) {
+function findEvenIndex(arr) {
 	// Your code
 }
 
